@@ -1,5 +1,8 @@
 # Speedshard - Stances
 
+> [!CAUTION]
+> **This mod does not work with the current version of MSL (0.9)** 
+
 ## Description
 
 This mod is a rework of all ten stances found in Stoneshard. With the following changes:
