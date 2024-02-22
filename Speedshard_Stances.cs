@@ -61,7 +61,6 @@ public class SpeedshardStances : Mod
                 .Save();
         }
 
-        AssemblyWrapper.CreateRefVariable("cost_turn", UndertaleInstruction.InstanceType.Self);
         Msl.LoadAssemblyAsString("gml_Object_o_skill_Create_0")
             .MatchFrom("main_spell")
             .InsertBelow("pushi.e 1\npop.v.b self.cost_turn")
