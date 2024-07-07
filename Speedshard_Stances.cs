@@ -12,7 +12,7 @@ public class SpeedshardStances : Mod
     public override string Author => "zizani";
     public override string Name => "Speedshard - Stances";
     public override string Description => "A rework for Stances";
-    public override string Version => "1.0.0.0";
+    public override string Version => "1.0.1";
     public override string TargetVersion => "0.8.2.10";
 
     public override void PatchMod()
