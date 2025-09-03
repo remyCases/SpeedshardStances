@@ -7,13 +7,14 @@ using ModShardLauncher.Mods;
 using UndertaleModLib.Models;
 
 namespace Speedshard_Stances;
+
 public class SpeedshardStances : Mod
 {
     public override string Author => "zizani";
     public override string Name => "Speedshard - Stances";
     public override string Description => "A rework for Stances";
-    public override string Version => "1.0.2";
-    public override string TargetVersion => "0.8.2.10";
+    public override string Version => "2.0.0";
+    public override string TargetVersion => "0.9.3.7";
 
     public override void PatchMod()
     {
@@ -23,16 +24,15 @@ public class SpeedshardStances : Mod
             .Save();
 
         Msl.AddNewEvent("o_buff_stance", ModFiles.GetCode("gml_Object_o_buff_stance_Other_15.gml"), EventType.Other, 15);
-        Msl.AddNewEvent("o_buff_stance", ModFiles.GetCode("gml_Object_o_buff_stance_Other_10.gml"), EventType.Other, 10);
 
         Msl.LoadGML("gml_Object_o_buff_stance_Other_20")
-            .MatchFrom("duration\nstage")
-            .ReplaceBy(ModFiles, "gml_Object_o_buff_stance_Other_20.gml")
+            .MatchFrom("duration")
+            .ReplaceBy("scr_restore_mp(owner, (1 * stage))")
             .Save();
 
         Msl.LoadGML("gml_Object_o_skill_Other_17")
-            .MatchFromUntil("if scr_stance_training(owner.id)", "}\n}")
-            .ReplaceBy(ModFiles, "gml_Object_o_skill_Other_17.gml")
+            .MatchFrom("if scr_stance_training(owner.id)")
+            .InsertAbove(ModFiles, "gml_Object_o_skill_Other_17.gml")
             .Save();
 
         string[] stancesBonus = {
@@ -51,8 +51,6 @@ public class SpeedshardStances : Mod
         foreach (string stanceBonus in stancesBonus)
         {
             Msl.LoadGML(stanceBonus)
-                .MatchFrom("ds_map_clear(other.data)")
-                .Remove()
                 .Apply(StancesBonusIterator)
                 .Save();
         }
@@ -79,10 +77,9 @@ public class SpeedshardStances : Mod
             ("o_skill_mayhem", "o_b_carnage"),
             ("o_skill_rampage", "o_b_rampage"),
         };
-        
+
         foreach ((string skill, string buff) in buffNames)
         {
-            #nullable enable
             UndertaleGameObject.Event? ev = Msl.GetObject(skill).Events[(int)EventType.Other].FirstOrDefault(x => x.EventSubtype == 13);
             if (ev == null)
             {
@@ -100,12 +97,19 @@ public class SpeedshardStances : Mod
                     .Save();
             }
         }
+
+        // Localization
+        Speedshard_Stances_Localization.DescriptionUpdate();
     }
     private static IEnumerable<string> StancesBonusIterator(IEnumerable<string> strings)
     {
         foreach (string str in strings)
         {
-            if (str.Contains("ds_map_add"))
+            if (str.Contains("ds_map_clear(other.data)"))
+            {
+                continue;
+            }
+            else if (str.Contains("ds_map_add"))
             {
                 yield return str.Replace("ds_map_add", "ds_map_replace");
             }
@@ -115,4 +119,5 @@ public class SpeedshardStances : Mod
             }
         }
     }
+    
 }
