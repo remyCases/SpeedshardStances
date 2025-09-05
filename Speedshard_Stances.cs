@@ -13,7 +13,7 @@ public class SpeedshardStances : Mod
     public override string Author => "zizani";
     public override string Name => "Speedshard - Stances";
     public override string Description => "A rework for Stances";
-    public override string Version => "2.0.0";
+    public override string Version => "2.1.0";
     public override string TargetVersion => "0.9.3.7";
 
     public override void PatchMod()
@@ -24,16 +24,31 @@ public class SpeedshardStances : Mod
             .Save();
 
         Msl.AddNewEvent("o_buff_stance", ModFiles.GetCode("gml_Object_o_buff_stance_Other_15.gml"), EventType.Other, 15);
+        Msl.AddNewEvent("o_buff_stance", ModFiles.GetCode("gml_Object_o_buff_stance_Other_10.gml"), EventType.Other, 10);
 
         Msl.LoadGML("gml_Object_o_buff_stance_Other_20")
             .MatchFrom("duration")
-            .ReplaceBy("scr_restore_mp(owner, (1 * stage))")
+            .ReplaceBy("")
+            .MatchFromUntil("stage > 1", "can_lose_stage")
+            .ReplaceBy(@"
+scr_restore_mp(owner, (1 * stage))
+with(o_buff_stance)
+{
+    if (stage > 1)
+    {
+        stage -= 1;
+    }
+}
+can_lose_stage = false
+")
             .Save();
 
         Msl.LoadGML("gml_Object_o_skill_Other_17")
             .MatchFrom("if scr_stance_training(owner.id)")
             .InsertAbove(ModFiles, "gml_Object_o_skill_Other_17.gml")
             .Save();
+
+        Msl.GetObject("o_b_defence_stance").ParentId = Msl.GetObject("o_buff_stance");
 
         string[] stancesBonus = {
             "gml_Object_o_b_fencer_stance_Other_15",
@@ -46,6 +61,7 @@ public class SpeedshardStances : Mod
             "gml_Object_o_b_steel_feast_Other_15",
             "gml_Object_o_b_carnage_Other_15",
             "gml_Object_o_b_rampage_Other_15",
+            "gml_Object_o_b_defence_stance_Other_15",
         };
 
         foreach (string stanceBonus in stancesBonus)
@@ -54,6 +70,62 @@ public class SpeedshardStances : Mod
                 .Apply(StancesBonusIterator)
                 .Save();
         }
+
+        // for hold the line
+        Msl.LoadGML("gml_Object_o_buff_stance_Alarm_1")
+            .MatchFrom("other.id")
+            .ReplaceBy(@"
+if (id != other.id && id.object_index != o_b_defence_stance && other.id.object_index != o_b_defence_stance)
+")
+            .Save();
+
+        Msl.LoadGML("gml_Object_o_b_defence_stance_Other_14")
+            .MatchFrom("duration")
+            .ReplaceBy("")
+            .Save();
+
+        Msl.LoadGML("gml_Object_o_b_defence_stance_Other_13")
+            .MatchFrom("stage -= 1")
+            .ReplaceBy(@"
+scr_restore_mp(owner, (1 * stage))
+with(o_buff_stance)
+{
+    if (stage > 1)
+    {
+        stage -= 1;
+    }
+}")
+            .MatchFrom("duration")
+            .ReplaceBy("")
+            .Save();
+
+        Msl.LoadGML("gml_Object_o_b_defence_stance_Other_15")
+            .MatchFrom("CTA")
+            .InsertBelow(@"
+if (scr_shield_get_weight() == ""Light"")
+{
+    ds_map_replace(other.data, ""CTA"", 10 * other.stage);
+}
+else
+{
+    ds_map_replace(other.data, ""CTA"", 7 * other.stage);
+}
+if (scr_shield_get_weight() == ""Heavy"")
+{
+    ds_map_replace(other.data, ""Damage_Returned"", 5 * other.stage);
+}
+")
+            .Save();
+
+        Msl.LoadGML("gml_Object_o_b_defence_stance_Alarm_2")
+            .MatchFrom("scr_shield_get_weight()\nstage")
+            .ReplaceBy("")
+            .Save();
+
+        Msl.LoadGML("gml_Object_o_skill_defensive_stance_Other_17")
+            .MatchFrom("Light\nmaxKD")
+            .ReplaceBy("")
+            .Save();
 
         Msl.LoadAssemblyAsString("gml_Object_o_skill_Create_0")
             .MatchFrom("main_spell")
@@ -76,6 +148,7 @@ public class SpeedshardStances : Mod
             ("o_skill_steel_feast", "o_b_steel_feast"),
             ("o_skill_mayhem", "o_b_carnage"),
             ("o_skill_rampage", "o_b_rampage"),
+            ("o_skill_defensive_stance", "o_b_defence_stance"),
         };
 
         foreach ((string skill, string buff) in buffNames)

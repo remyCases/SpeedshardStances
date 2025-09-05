@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using ModShardLauncher;
 
 namespace Speedshard_Stances;
@@ -50,7 +51,7 @@ static public class Speedshard_Stances_Localization
 "##Using the ability tree's skills grants an extra stack of the effect (up to ~w~IV~/~)." +
 "##Basic sword strikes restores ~lg~1~/~ Energy by stacks but reduce its number of stacks (no more than once per turn)." +
 "##~w~\\\"Tactical Advantage\\\"~/~ removes the Energy losts each turn." +
-"##Only one ~w~Stance~/~ effect can be active at a time. Activating and deactivating a ~w~Stance~/~ does not cost a turn.",
+"##Only one ~w~Stance~/~ effect (except for ~w~Hold the Line!~/~) can be active at a time. Activating and deactivating a ~w~Stance~/~ does not cost a turn.",
 
 "o_b_fencer_stance",
 "Using the ability tree's skills grants an extra stack of the effect (up to ~sy~IV~/~ stacks)." +
@@ -68,7 +69,7 @@ static public class Speedshard_Stances_Localization
 "##Using the ability tree's skills grants an extra stack of the effect (up to ~w~IV~/~)." +
 "##Basic axe strikes restores ~lg~1~/~ Energy by stacks but reduce its number of stacks (no more than once per turn)." +
 "##~w~\\\"Tactical Advantage\\\"~/~ removes the Energy losts each turn." +
-"##Only one ~w~Stance~/~ effect can be active at a time. Activating and deactivating a ~w~Stance~/~ does not cost a turn.",
+"##Only one ~w~Stance~/~ effect (except for ~w~Hold the Line!~/~) can be active at a time. Activating and deactivating a ~w~Stance~/~ does not cost a turn.",
 
 "o_b_massacre",
 "Using the ability tree's skills grants an extra stack of the effect (up to ~sy~IV~/~ stacks)." +
@@ -86,7 +87,7 @@ static public class Speedshard_Stances_Localization
 "##Using the ability tree's skills grants an extra stack of the effect (up to ~w~IV~/~)." +
 "##Basic mace strikes restores ~lg~1~/~ Energy by stacks but reduce its number of stacks (no more than once per turn)." +
 "##~w~\\\"Tactical Advantage\\\"~/~ removes the Energy losts each turn." +
-"##Only one ~w~Stance~/~ effect can be active at a time. Activating and deactivating a ~w~Stance~/~ does not cost a turn.",
+"##Only one ~w~Stance~/~ effect (except for ~w~Hold the Line!~/~) can be active at a time. Activating and deactivating a ~w~Stance~/~ does not cost a turn.",
 
 "o_b_hammer_and_anvil",
 "Using the ability tree's skills grants an extra stack of the effect (up to ~sy~IV~/~ stacks)." +
@@ -104,7 +105,7 @@ static public class Speedshard_Stances_Localization
 "##Using the ability tree's skills grants an extra stack of the effect (up to ~w~IV~/~)." +
 "##Basic dagger strikes restores ~lg~1~/~ Energy by stacks but reduce its number of stacks (no more than once per turn)." +
 "##~w~\\\"Tactical Advantage\\\"~/~ removes the Energy losts each turn." +
-"##Only one ~w~Stance~/~ effect can be active at a time. Activating and deactivating a ~w~Stance~/~ does not cost a turn.",
+"##Only one ~w~Stance~/~ effect (except for ~w~Hold the Line!~/~) can be active at a time. Activating and deactivating a ~w~Stance~/~ does not cost a turn.",
 
 "o_b_painful_stabs",
 "Using the ability tree's skills grants an extra stack of the effect (up to ~sy~IV~/~ stacks)." +
@@ -125,7 +126,7 @@ static public class Speedshard_Stances_Localization
 "##Using the ability tree's skills grants an extra stack of the effect (up to ~w~IV~/~)." +
 "##Basic staff strikes restores ~lg~1~/~ Energy by stacks but reduce its number of stacks (no more than once per turn)." +
 "##~w~\\\"Tactical Advantage\\\"~/~ removes the Energy losts each turn." +
-"##Only one ~w~Stance~/~ effect can be active at a time. Activating and deactivating a ~w~Stance~/~ does not cost a turn.",
+"##Only one ~w~Stance~/~ effect (except for ~w~Hold the Line!~/~) can be active at a time. Activating and deactivating a ~w~Stance~/~ does not cost a turn.",
 
 "o_b_unwavering_stance",
 "Using the ability tree's skills grants an extra stack of the effect (up to ~sy~IV~/~ stacks)." +
@@ -144,7 +145,7 @@ static public class Speedshard_Stances_Localization
 "##Using the ability tree's skills (except ~w~\"Taking Aim\"~/~) grants an extra stack of the effect (up to ~w~IV~/~)." +
 "##Basic shots restores ~lg~1~/~ Energy by stacks but reduce its number of stacks (no more than once per turn)." +
 "##~w~\\\"Tactical Advantage\\\"~/~ removes the Energy losts each turn." +
-"##Only one ~w~Stance~/~ effect can be active at a time. Activating and deactivating a ~w~Stance~/~ does not cost a turn.",
+"##Only one ~w~Stance~/~ effect (except for ~w~Hold the Line!~/~) can be active at a time. Activating and deactivating a ~w~Stance~/~ does not cost a turn.",
 
 "o_b_suppression",
 "Using the ability tree's skills (except ~sy~Taking Aim~/~) grants an extra stack of the effect (up to ~sy~IV~/~ stacks)." +
@@ -162,7 +163,7 @@ static public class Speedshard_Stances_Localization
 "##Using the ability tree's skills grants an extra stack of the effect (up to ~w~IV~/~)." +
 "##Basic spear strikes restores ~lg~1~/~ Energy by stacks but reduce its number of stacks (no more than once per turn)." +
 "##~w~\\\"Tactical Advantage\\\"~/~ removes the Energy losts each turn." +
-"##Only one ~w~Stance~/~ effect can be active at a time. Activating and deactivating a ~w~Stance~/~ does not cost a turn.",
+"##Only one ~w~Stance~/~ effect (except for ~w~Hold the Line!~/~) can be active at a time. Activating and deactivating a ~w~Stance~/~ does not cost a turn.",
 
 "o_b_pikemanstance",
 "Using the ability tree's skills grants an extra stack of the effect (up to ~sy~IV~/~ stacks)." +
@@ -181,7 +182,7 @@ static public class Speedshard_Stances_Localization
 "##Using the ability tree's skills grants an extra stack of the effect (up to ~w~IV~/~)." +
 "##Basic two-handed sword strikes restores ~lg~1~/~ Energy by stacks but reduce its number of stacks (no more than once per turn)." +
 "##~w~\\\"Tactical Advantage\\\"~/~ removes the Energy losts each turn." +
-"##Only one ~w~Stance~/~ effect can be active at a time. Activating and deactivating a ~w~Stance~/~ does not cost a turn.",
+"##Only one ~w~Stance~/~ effect (except for ~w~Hold the Line!~/~) can be active at a time. Activating and deactivating a ~w~Stance~/~ does not cost a turn.",
 
 "o_b_steel_feast",
 "Using the ability tree's skills grants an extra stack of the effect (up to ~sy~IV~/~ stacks)." +
@@ -200,7 +201,7 @@ static public class Speedshard_Stances_Localization
 "##Using the ability tree's skills grants an extra stack of the effect (up to ~w~IV~/~)." +
 "##Basic two-handed mace strikes restores ~lg~1~/~ Energy by stacks but reduce its number of stacks (no more than once per turn)." +
 "##~w~\\\"Tactical Advantage\\\"~/~ removes the Energy losts each turn." +
-"##Only one ~w~Stance~/~ effect can be active at a time. Activating and deactivating a ~w~Stance~/~ does not cost a turn." +
+"##Only one ~w~Stance~/~ effect (except for ~w~Hold the Line!~/~) can be active at a time. Activating and deactivating a ~w~Stance~/~ does not cost a turn." +
 "##If affected by ~lg~\"Mighty Swing\"~/~, using the skill delivers a strike to a random adjacent enemy.",
 
 "o_b_carnage",
@@ -209,7 +210,7 @@ static public class Speedshard_Stances_Localization
 
         new DescriptionSkillsEffects(
 "Rampage",
-"Activates ~lg~\"Rampage\"~/~ for ~w~10~/~ turns:" +
+"Activates ~lg~\"Rampage\"~/~ until deactivated or running out of Energy:" +
 "##~lg~-10%~/~ Skills Energy Cost" +
 "#~lg~+4%~/~ Crit Chance" +
 "#~lg~+15%~/~ Bleed Chance" +
@@ -220,11 +221,32 @@ static public class Speedshard_Stances_Localization
 "##Using the ability tree's skills grants an extra stack of the effect (up to ~w~IV~/~)." +
 "##Basic two-handed axe strikes restores ~lg~1~/~ Energy by stacks but reduce its number of stacks (no more than once per turn)." +
 "##~w~\\\"Tactical Advantage\\\"~/~ removes the Energy losts each turn." +
-"##Only one ~w~Stance~/~ effect can be active at a time. Activating and deactivating a ~w~Stance~/~ does not cost a turn.",
+"##Only one ~w~Stance~/~ effect (except for ~w~Hold the Line!~/~) can be active at a time. Activating and deactivating a ~w~Stance~/~ does not cost a turn.",
 
 "o_b_rampage",
 "Using the ability tree's skills grants an extra stack of the effect (up to ~sy~IV~/~ stacks)." +
 "##Basic two-handed axe strikes restores ~lg~1~/~ Energy by stacks but reduce its number of stacks (no more than once per turn)."),
+
+        new DescriptionSkillsEffects(
+"Defensive_Stance",
+"Activates ~lg~\"Hold the Line!\"~/~ until deactivated or running out of Energy:" +
+"##~lg~-5%~/~ Damage Taken" +
+"#~lg~+5%~/~ Block Power Recovery" +
+"#~lg~+7%~/~ Counter Chance" +
+"#~lg~+10%~/~ Move Resistance" +
+"#~lg~+10%~/~ Control Resistance" +
+"#~r~-1~/~ Energy Replenishment" +
+"#~r~-5%~/~ Energy Restoration" +
+"##Using the ability tree's skills grants ~lg~2~/~ stacks of the effect (up to ~w~IV~/~)." +
+"##Each received hit restores ~lg~1~/~ Energy by stacks but reduces its number of stacks (no more than once per turn)." +
+"##If equipped with a ~w~light shield~/~, adds ~lg~+3%~/~ Counter Chance by stacks (up to ~lg~+10%~/~)." +
+"##If equipped with a ~w~heavy shield~/~, adds ~lg~+5%~/~ Damage Reflection by stacks." +
+"##~w~\\\"Tactical Advantage\\\"~/~ removes the Energy losts each turn." +
+"##Only one ~w~Stance~/~ effect (except for ~w~Hold the Line!~/~) can be active at a time. Activating and deactivating a ~w~Stance~/~ does not cost a turn.",
+
+"o_b_defence_stance",
+"##Using the ability tree's skills grants ~lg~2~/~ stacks of the effect (up to ~w~IV~/~)." +
+"##Each received hit restores ~lg~1~/~ Energy by stacks but reduces its number of stacks (no more than once per turn)."),
 
     };
 
@@ -236,6 +258,10 @@ static public class Speedshard_Stances_Localization
 
         Msl.LoadAssemblyAsString("gml_GlobalScript_table_effects")
             .Apply(EffectsDescriptionIterator)
+            .Save();
+
+        Msl.LoadAssemblyAsString("gml_GlobalScript_table_skills_stats")
+            .Apply(SkillsStatsIterator)
             .Save();
     }
     private static bool ContainsAnySkill(this string haystack, out DescriptionSkillsEffects out_desc)
@@ -298,7 +324,7 @@ static public class Speedshard_Stances_Localization
                 string.Format("No modification was made, {0} were not found in the description skills table.",
                 string.Join(", ", modif_done.Where(x => !x.Value).Select(x => x.Key))));
         if (!in_desc)
-            throw new InvalidOperationException("Could not located the description skills table.");
+            throw new InvalidOperationException("Could not locate the description skills table.");
     }
     private static IEnumerable<string> EffectsDescriptionIterator(IEnumerable<string> input)
     {
@@ -332,6 +358,26 @@ static public class Speedshard_Stances_Localization
                 string.Format("No modification was made, {0} were not found in the description skills table.",
                 string.Join(", ", modif_done.Where(x => !x.Value).Select(x => x.Key))));
         if (!in_desc)
-            throw new InvalidOperationException("Could not located the description skills table.");
+            throw new InvalidOperationException("Could not locate the description skills table.");
+    }
+    // change defensive_stance from a maneuver to a stance
+    private static IEnumerable<string> SkillsStatsIterator(IEnumerable<string> input)
+    {
+        bool found = false;
+        foreach (string item in input)
+        {
+            if (!found && item.Contains("\"Defensive_Stance"))
+            {
+                found = true;
+                yield return "push.s \"Defensive_Stance;o_b_defence_stance;No Target;1;12;12;0;10;0;0;0;normal;;skill;0;;shield;0;;weapon;0;0;;1;;;;\"";
+            }
+            else
+            {
+                yield return item;
+            }
+        }
+
+        if (!found)
+            throw new InvalidOperationException("Could not locate the skill stats for Defensive_Stance.");
     }
 }
