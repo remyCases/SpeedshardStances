@@ -2,18 +2,18 @@
 
 ## Description
 
-This mod is a rework of all ten stances found in Stoneshard. With the following changes:
-- Stances stay indefinitevely until weapon is swaped or unequipped, no more duration.
+This mod is a rework of all ten stances found in Stoneshard plus `Hold the Line` which is now treated as a stance. With the following changes:
+
+- Stances stay indefinitevely until weapon is swaped, unequipped or running out of Energy.
 - Stances activation and deactivation does not cost a turn, it's just pure MP management.
 - Stances can be deactivated by clicking the skill again, no need to switch layout to remove the stance buff.
-- Normal attacks restore 1 MP * stage.
-- Normal attack reduces the number of stack by 1 as previously, but don't dissipate the buff.
-- While a stance is active, MP regeneration is greatly reduced (for early levels, that means you can't regenerate MP while using a stance).
-- MP regeneration penalty scales with stages ( -10% * stage, -5% * stage if stance_training).
-- While a stance is active, each 2 turns remove 1 MP (4 turns if stance_training), now you will run out quickly out of mp in mid game.
-- If you run out of MP, stances will automatically dissipate.
+- Normal attacks and blocking with a shield for `Hold the Line` restore 1 MP * stage only once a turn.
+- Normal attack and blocking with a shield for `Hold the Line` reduces the number of stack by 1 once a turn as previously, but don't dissipate the buff.
+- MP regeneration penalty scales with stages ( -5% / stages ).
+- While a stance is active, you lose 1 MP / turn, unless you have `Stance Training`.
+- Stances activation cost only 1 MP.
 
-Other functionalities can be found in [Speedshard_Core](https://github.com/remyCases/SpeedshardCore),  [Speedshard_Skinning](https://github.com/remyCases/SpeedshardSkinning), [Speedshard_MoneyDungeon](https://github.com/remyCases/SpeedshardMoneyDungeon) and [Speedshard_Sprint](https://github.com/remyCases/SpeedshardSprint).
+Other functionalities can be found in [Speedshard_Core](https://github.com/remyCases/SpeedshardCore), [Speedshard_MoneyDungeon](https://github.com/remyCases/SpeedshardMoneyDungeon) and [Speedshard_Sprint](https://github.com/remyCases/SpeedshardSprint).
 
 ## Installation
 
@@ -45,26 +45,27 @@ You can now play the game with the modded version !
 
 ## Troubleshooting
 
-If you encountered some troubles while trying to patch your game, you can contact me on [Discord](https://discord.com/users/200330865522376704), and send me the latest log file found in `MSL/logs`.
+If you encountered some troubles while trying to patch your game, you can contact me on [Discord](https://discord.com/users/1291700720218931213), and send me the latest log file found in `MSL/logs`.
 
 ## See also
 
 Other mods I've made:
+
 - Stoneshard:
-    - [Character Creation](https://github.com/remyCases/CharacterCreator)
-    - [Pelt Durability](https://github.com/remyCases/Stoneshard-PeltDurability)
-    - [MoreSaveSlots](https://github.com/remyCases/Stoneshard-MoreSaveSlots)
-    - [Defeat Scenarios](https://github.com/remyCases/Stoneshard-DefeatScenarios)
-    - [Guaranteed Uniques](https://github.com/remyCases/GuaranteedUniques)
+  - [Character Creation](https://github.com/remyCases/CharacterCreator)
+  - [Pelt Durability](https://github.com/remyCases/Stoneshard-PeltDurability)
+  - [MoreSaveSlots](https://github.com/remyCases/Stoneshard-MoreSaveSlots)
+  - [Defeat Scenarios](https://github.com/remyCases/Stoneshard-DefeatScenarios)
+  - [Guaranteed Uniques](https://github.com/remyCases/GuaranteedUniques)
 
 - Shardpunk:
-    - [Shardpunk-BiggerTeam](https://github.com/remyCases/Shardpunk-BiggerTeam)
-    - [Shardpunk-Faster](https://github.com/remyCases/Shardpunk-Faster)
-    - [Shardpunk-MoreSkillLevels](https://github.com/remyCases/Shardpunk-MoreSkillLevels)
-    - [Shardpunk-RandomParty](https://github.com/remyCases/Shardpunk-RandomParty)
+  - [Shardpunk-BiggerTeam](https://github.com/remyCases/Shardpunk-BiggerTeam)
+  - [Shardpunk-Faster](https://github.com/remyCases/Shardpunk-Faster)
+  - [Shardpunk-MoreSkillLevels](https://github.com/remyCases/Shardpunk-MoreSkillLevels)
+  - [Shardpunk-RandomParty](https://github.com/remyCases/Shardpunk-RandomParty)
 
 - Airship Kingdom Adrift:
-    - [ProductionPanel](https://github.com/remyCases/AKAMod_ProdPanel)
+  - [ProductionPanel](https://github.com/remyCases/AKAMod_ProdPanel)
 
 - The Iron Oath:
-    - [AllyFreeze](https://github.com/remyCases/TheIronOath-AllyFreeze)
+  - [AllyFreeze](https://github.com/remyCases/TheIronOath-AllyFreeze)
