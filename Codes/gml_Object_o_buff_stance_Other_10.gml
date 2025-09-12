@@ -1,3 +1,4 @@
+event_inherited()
 if instance_exists(owner)
 {
     var to_destroy_buff = 0

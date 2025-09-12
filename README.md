@@ -47,6 +47,10 @@ You can now play the game with the modded version !
 
 If you encountered some troubles while trying to patch your game, you can contact me on [Discord](https://discord.com/users/1291700720218931213), and send me the latest log file found in `MSL/logs`.
 
+## Contributions and Thanks
+
+- `Shero` for the Chinese translation.
+
 ## See also
 
 Other mods I've made:
